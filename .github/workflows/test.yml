@@ -1,0 +1,33 @@
+name: Automated Tests for find_lowest_number
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    name: Run Test Suite
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Test 1 - Ten Numbers
+        run: |
+          python3 find_lowest_number.py test_data/test1_input.txt output1.txt
+          diff output1.txt test_data/test1_expected.txt
+
+      - name: Test 2 - Single Number
+        run: |
+          python3 find_lowest_number.py test_data/test2_input.txt output2.txt
+          diff output2.txt test_data/test2_expected.txt
+
+      - name: Test 3 - Blank File
+        run: |
+          python3 find_lowest_number.py test_data/test3_input.txt output3.txt
+          diff output3.txt test_data/test3_expected.txt
