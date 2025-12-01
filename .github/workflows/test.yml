@@ -17,12 +17,12 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Debug — Show Directory Tree
+      - name: Debug — List all files so we can see the real directory
         run: |
-          echo "Current directory:"
+          echo "Working directory:"
           pwd
-          echo "Files:"
-          ls -R
+          echo "Files in directory:"
+          ls -R .
 
       - name: Test 1 - Ten Numbers
         run: |
