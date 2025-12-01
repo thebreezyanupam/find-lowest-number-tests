@@ -1,4 +1,7 @@
-name: Automated Tests for find_lowest_number
+- name: Debug — List files
+  run: |
+    pwd
+    ls -R
 
 on:
   push:
