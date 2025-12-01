@@ -1,7 +1,4 @@
-- name: Debug — List files
-  run: |
-    pwd
-    ls -R
+name: Automated Tests for find_lowest_number
 
 on:
   push:
@@ -20,17 +17,24 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Debug — Show Directory Tree
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files:"
+          ls -R
+
       - name: Test 1 - Ten Numbers
         run: |
-          python3 find_lowest_number.py test_data/test1_input.txt output1.txt
-          diff output1.txt test_data/test1_expected.txt
+          python3 ./find_lowest_number.py ./test_data/test1_input.txt output1.txt
+          diff output1.txt ./test_data/test1_expected.txt
 
       - name: Test 2 - Single Number
         run: |
-          python3 find_lowest_number.py test_data/test2_input.txt output2.txt
-          diff output2.txt test_data/test2_expected.txt
+          python3 ./find_lowest_number.py ./test_data/test2_input.txt output2.txt
+          diff output2.txt ./test_data/test2_expected.txt
 
       - name: Test 3 - Blank File
         run: |
-          python3 find_lowest_number.py test_data/test3_input.txt output3.txt
-          diff output3.txt test_data/test3_expected.txt
+          python3 ./find_lowest_number.py ./test_data/test3_input.txt output3.txt
+          diff output3.txt ./test_data/test3_expected.txt
